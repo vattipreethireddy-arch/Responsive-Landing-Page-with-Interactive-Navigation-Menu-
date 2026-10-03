@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Interactive Navigation</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Arial}
+
+#navbar{
+ position:fixed;top:0;width:100%;padding:20px 50px;
+ display:flex;justify-content:space-between;align-items:center;
+ background:white;transition:.4s;z-index:1000
+}
+
+#navbar.scrolled{
+ padding:12px 50px;background:#222;
+ box-shadow:0 4px 15px #0005
+}
+
+.logo{font-size:25px;font-weight:bold;color:#6c2bd9}
+.scrolled .logo{color:#a78bfa}
+
+.menu{display:flex;list-style:none;gap:10px}
+.menu a{
+ display:block;padding:10px 15px;text-decoration:none;
+ color:#333;font-weight:bold;transition:.3s
+}
+
+.scrolled .menu a{color:white}
+.menu a:hover{color:#6c2bd9!important;transform:translateY(-3px)}
+
+.menu a:after{
+ content:"";display:block;width:0;height:3px;
+ background:#6c2bd9;transition:.3s
+}
+
+.menu a:hover:after{width:100%}
+
+section{
+ height:100vh;padding-top:150px;
+ display:flex;flex-direction:column;
+ justify-content:center;align-items:center
+}
+
+#home{background:#eee6ff}
+#about{background:white}
+#services{background:#e6f7ff}
+#contact{background:#fff0e6}
+
+h1{font-size:45px;margin-bottom:20px}
+p{font-size:20px;color:#555}
+</style>
+</head>
+
+<body>
+
+<nav id="navbar">
+<div class="logo">MyWebsite</div>
+
+<ul class="menu">
+<li><a href="#home">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
+
+<section id="home">
+<h1>Home</h1>
+<p>Welcome to my website.</p>
+</section>
+
+<section id="about">
+<h1>About Us</h1>
+<p>This is the About section.</p>
+</section>
+
+<section id="services">
+<h1>Our Services</h1>
+<p>We provide different services.</p>
+</section>
+
+<section id="contact">
+<h1>Contact Us</h1>
+<p>Contact us through this section.</p>
+</section>
+
+<script>
+window.onscroll=()=>{
+document.getElementById("navbar").classList.toggle("scrolled",scrollY>50)
+}
+</script>
+
+</body>
+</html>
